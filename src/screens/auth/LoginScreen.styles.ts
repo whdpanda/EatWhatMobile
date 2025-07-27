@@ -1,0 +1,92 @@
+import { StyleSheet } from 'react-native';
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 22,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+  },
+  backLinkRow: {
+    marginBottom: 16,
+  },
+  backLink: {
+    color: '#007bff',
+    fontSize: 16,
+    textDecorationLine: 'underline',
+    fontWeight: '500',
+  },
+  loginTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    marginBottom: 28,
+  },
+  field: {
+    marginBottom: 16,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    fontSize: 17,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    backgroundColor: '#f8f8f8',
+  },
+  captchaRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+    marginTop: 8,
+  },
+  captchaInput: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    fontSize: 17,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    backgroundColor: '#f8f8f8',
+    marginRight: 12,
+  },
+  captchaCode: {
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    backgroundColor: '#ffe082',
+    borderRadius: 7,
+    fontSize: 22,
+    fontWeight: 'bold',
+    letterSpacing: 4,
+    color: '#bf8100',
+    overflow: 'hidden',
+  },
+  errorMsg: {
+    color: '#f33',
+    marginBottom: 6,
+    marginTop: 4,
+    fontSize: 15,
+    alignSelf: 'center',
+  },
+  actions: {
+    flexDirection: 'row',
+    marginTop: 18,
+    justifyContent: 'center',
+  },
+  button: {
+    backgroundColor: '#ff9900',
+    borderRadius: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    marginHorizontal: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 17,
+    letterSpacing: 1,
+  },
+});
