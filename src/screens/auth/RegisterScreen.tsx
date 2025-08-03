@@ -66,7 +66,7 @@ export default function RegisterScreen() {
         />
         <TextInput
           style={styles.input}
-          placeholder={t("register_email")}
+          placeholder={t("email")}
           value={email}
           onChangeText={setEmail}
           autoCapitalize="none"

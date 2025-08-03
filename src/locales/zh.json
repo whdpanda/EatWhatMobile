@@ -11,6 +11,7 @@
   "login": "登录",
   "register": "注册",
   "logout": "退出",
+  "email": "邮箱",
   "login_title": "用户登录",
   "login_username": "用户名",
   "login_password": "密码",
@@ -26,5 +27,10 @@
   "captcha_placeholder": "请输入验证码",
   "verify_email_title": "邮箱验证",
   "verify_input_code": "请输入验证码",
-  "verify_submit": "提交验证"
+  "verify_submit": "提交验证",
+  "reset_password": "重置密码",
+  "forgot_password": "忘记密码",
+  "new_password": "新密码",
+  "confirm_password": "确认密码",
+  "back": "返回"
 }

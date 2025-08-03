@@ -1,6 +1,6 @@
 import { apiFetch } from "./api";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-const API_URL = "https://api.randomeatwhat.com";
+import { API_URL } from "../constants";
 const USER_KEY = 'eatwhat_user';  // 统一用这个key！
 
 export async function getUser() {

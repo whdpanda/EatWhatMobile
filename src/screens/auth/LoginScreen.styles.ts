@@ -89,4 +89,12 @@ export default StyleSheet.create({
     fontSize: 17,
     letterSpacing: 1,
   },
+    forgotLink: {
+    marginTop: 10,
+    alignItems: "flex-end",
+  },
+  forgotLinkText: {
+    color: "#2b7cff",
+    fontSize: 16,
+  },
 });

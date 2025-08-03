@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, TouchableOpacity, ActivityIndicator} from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ActivityIndicator,
+  Keyboard,
+} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { useTranslation } from "react-i18next";
@@ -10,6 +17,7 @@ import { login } from "../../services/auth";
 
 const USER_KEY = "eatwhat_user";
 
+// 生成验证码
 const generateCaptcha = () => {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let code = "";
@@ -27,54 +35,65 @@ export default function LoginScreen() {
   const [captcha, setCaptcha] = useState("");
   const [captchaInput, setCaptchaInput] = useState("");
   const [captchaError, setCaptchaError] = useState("");
+
+  // 类型安全 navigation
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
+  // 初始加载验证码
   useEffect(() => {
     setCaptcha(generateCaptcha());
   }, []);
 
+  // 刷新验证码
   const handleRefreshCaptcha = () => {
     setCaptcha(generateCaptcha());
     setCaptchaInput("");
     setCaptchaError("");
   };
 
+  // 登录处理
   async function handleLogin() {
-  setErr("");
-  setCaptchaError("");
-
-  if (captchaInput.trim().toUpperCase() !== captcha) {
-    setCaptchaError(t("captcha_wrong"));
-    handleRefreshCaptcha();
-    return;
+    Keyboard.dismiss(); // 自动关闭键盘
+    setErr("");
+    setCaptchaError("");
+    if (captchaInput.trim().toUpperCase() !== captcha) {
+      setCaptchaError(t("captcha_wrong"));
+      handleRefreshCaptcha();
+      return;
+    }
+    setLoading(true);
+    try {
+      const data = await login(username, password);
+      await AsyncStorage.setItem(
+        USER_KEY,
+        JSON.stringify({ username: data.username })
+      );
+      // 跳转首页并清空历史栈
+      navigation.reset({ index: 0, routes: [{ name: "Home" }] });
+    } catch (e: any) {
+      setErr(e.message || t("login_failed"));
+    }
+    setLoading(false);
   }
 
-  setLoading(true);
-  try {
-    const data = await login(username, password);
-    await AsyncStorage.setItem(
-      USER_KEY,
-      JSON.stringify({ username: data.username })
-    );
-    navigation.reset({ index: 0, routes: [{ name: "Home" }] });
-  } catch (e: any) {
-    setErr(e.message || t("login_failed"));
-  }
-  setLoading(false);
-}
-  const handleGoHome = () => navigation.navigate("Home" as never);
-  const handleRegister = () => navigation.navigate("Register" as never);
+  // 跳转主页
+  const handleGoHome = () => navigation.navigate("Home");
+  // 跳转注册
+  const handleRegister = () => navigation.navigate("Register");
+  // 跳转忘记密码
+  const handleForgot = () => navigation.navigate("ForgotPassword");
 
   return (
     <View style={styles.container}>
       {/* 返回主页 */}
       <TouchableOpacity onPress={handleGoHome} style={styles.backLinkRow}>
-        <Text style={styles.backLink}>{t("back_home")}</Text>
+        <Text style={styles.backLink}>{t("back")}</Text>
       </TouchableOpacity>
 
+      {/* 登录标题 */}
       <Text style={styles.loginTitle}>{t("login_title")}</Text>
 
-      {/* 用户名 */}
+      {/* 用户名输入 */}
       <View style={styles.field}>
         <TextInput
           style={styles.input}
@@ -85,7 +104,7 @@ export default function LoginScreen() {
           autoComplete="username"
         />
       </View>
-      {/* 密码 */}
+      {/* 密码输入 */}
       <View style={styles.field}>
         <TextInput
           style={styles.input}
@@ -107,7 +126,9 @@ export default function LoginScreen() {
           maxLength={4}
         />
         <TouchableOpacity onPress={handleRefreshCaptcha}>
-          <Text style={styles.captchaCode} selectable={false} >{captcha}</Text>
+          <Text style={styles.captchaCode} selectable={false}>
+            {captcha}
+          </Text>
         </TouchableOpacity>
       </View>
       {/* 错误提示 */}
@@ -130,6 +151,10 @@ export default function LoginScreen() {
           <Text style={styles.buttonText}>{t("register")}</Text>
         </TouchableOpacity>
       </View>
+      {/* 忘记密码入口 */}
+      <TouchableOpacity onPress={handleForgot} style={styles.forgotLink}>
+        <Text style={styles.forgotLinkText}>{t("forgot_password")}</Text>
+      </TouchableOpacity>
     </View>
   );
 }

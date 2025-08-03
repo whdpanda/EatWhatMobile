@@ -14,7 +14,7 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Header /> {/* 只在首页（HomeScreen）显示 */}
+      <Header />
       <Text style={styles.title}>{t('title')}</Text>
       <RestaurantSearchForm
         onResult={setRestaurants}

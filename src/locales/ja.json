@@ -11,6 +11,7 @@
   "login": "ログイン",
   "register": "登録",
   "logout": "ログアウト",
+  "email": "メールアドレス",
   "login_title": "ユーザーログイン",
   "login_username": "ユーザー名",
   "login_password": "パスワード",
@@ -19,12 +20,17 @@
   "register_username": "ユーザー名",
   "register_password": "パスワード",
   "register_password_repeat": "パスワード（確認）",
-  "register_submit": "登録する",
+  "register_submit": "送信",
   "register_has_account": "すでにアカウントをお持ちですか？",
   "register_to_login": "ログインへ",
   "register_loading": "登録中...",
   "captcha_placeholder": "認証コードを入力してください",
   "verify_email_title": "メール認証",
   "verify_input_code": "認証コードを入力してください",
-  "verify_submit": "認証する"
+  "verify_submit": "認証する",
+  "reset_password": "パスワードをリセット",
+  "forgot_password": "パスワードを忘れた場合",
+  "new_password": "新しいパスワード",
+  "confirm_password": "パスワード（確認）",
+  "back": "戻る"
 }

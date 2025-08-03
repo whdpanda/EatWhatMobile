@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { API_URL } from "../constants"; // 确保引入API_URL常量
 
 const USER_KEY = "eatwhat_user";
 
@@ -30,7 +31,6 @@ export default function useAuth() {
   // 登录（调用服务端 API 并保存到 AsyncStorage）
   const login = useCallback(async (username: string, password: string) => {
     // 这里建议真实项目放到 api.ts service 里，这里简单直写
-    const API_URL = "https://api.randomeatwhat.com";
     const res = await fetch(`${API_URL}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -52,7 +52,6 @@ export default function useAuth() {
 
   // 注册
   const register = useCallback(async (username: string, email: string, password: string) => {
-    const API_URL = "https://api.randomeatwhat.com";
     const res = await fetch(`${API_URL}/api/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

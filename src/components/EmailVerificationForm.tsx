@@ -67,7 +67,7 @@ export default function EmailVerificationForm({
         style={styles.input}
         value={email}
         onChangeText={setEmail}
-        placeholder={t("register_email")}
+        placeholder={t("email")}
         autoCapitalize="none"
         keyboardType="email-address"
         editable={!defaultEmail}

@@ -11,6 +11,7 @@
   "login": "Login",
   "register": "Register",
   "logout": "Logout",
+  "email": "Email",
   "login_title": "User Login",
   "login_username": "Username",
   "login_password": "Password",
@@ -23,8 +24,13 @@
   "register_has_account": "Already have an account?",
   "register_to_login": "Go to Login",
   "register_loading": "Registering...",
-  "captcha_placeholder": "Enter the verification code",
+  "captcha_placeholder": "Enter verification code",
   "verify_email_title": "Email Verification",
-  "verify_input_code": "Enter the verification code",
-  "verify_submit": "Verify"
+  "verify_input_code": "Enter verification code",
+  "verify_submit": "Verify",
+  "reset_password": "Reset Password",
+  "forgot_password": "Forgot Password",
+  "new_password": "New Password",
+  "confirm_password": "Confirm Password",
+  "back": "Back"
 }

@@ -1,5 +1,5 @@
 import { apiFetch } from "./api";
-const API_URL = "https://api.randomeatwhat.com";
+import { API_URL } from "../constants";
 
 // 推荐类型定义（和你的后端返回结构一致）
 export type Restaurant = {
